@@ -1,0 +1,73 @@
+i7-1 - keras.io > functional api > bottom
+	tensor flow.org >tutorials > image captioning (save features on disk
+
+Fairness question - Frank building deep learning IQ by face - what could go wrong
+
+Code Block bugs - Keras code, subclass, Franswas book
+
+Blog posts at the end of the slides
+
+Definitely know Fairness, Federated Learning (how does it work with gradients), Testing, Transfer Learning (what is it, how does it work, what can you do? reusing activations, fine-tune the model)
+
+Whats the diff between batch gradient descent, mini batch and stochastic batch
+
+How many parameters
+
+Find bug in ReLu from HW3
+
+Output of convolution
+
+Deep Learning chooses features that are representational 
+
+How do you write deep dream:
+	Start with pre-trained classifier
+	Start with random noise image
+	Choose output from trained classifier (just one), then forward random noise image through the network
+	Get gradients from the image from output layer and use gradient ascent (maximize an activation) on input image instead of weights
+	Modify image to excite output layer
+
+VGG - Where are weights going to > dense layers
+What are key differences of convolution vs dense layers:
+	Conv has less parameters because of the smaller filters conducting parameter sharing
+	RNN similar as it uses the same weights at each step
+	Enormous image > convolving takes time because of matrix mult.
+			Dense layer is fully connected with many weights
+
+
+Fine-tuning - franswas book, with transfer learning, look this up
+Spend time on user studies before you get it out there to better fine-tune.
+
+Global Average Pooling or Max Pooling - given conv layers, what is output of GAP, why useful
+	GAP - averages and reduces number of parameters
+	Max P - reduces size of image, less computations, passing the key parts of the image
+
+1D convolution - reduces > notes on slide
+
+Data Augmentation - 
+
+Medical Imagining will def be on there
+
+How to train model with multiple zoom levels - how to get details and context
+	Take same centered of each image and zoom
+	Solution they came up with:  built a set of models and had a fully connected layer on top
+		Good to do? - only after it's useful to your user, then you scale up
+		Spend time on thinking through
+
+Actionable insights - useful first
+
+Definitely read the Diabetic Retinopathy
+
+Subclass model is the one where you create a class model and have an initialize and call function to order the layers and what to do with them on X dataset
+
+Add another input, add the data in the call function, then add the layers on what to do, then last before returning, you concatenate tf.concat(x,y)
+
+What is the difference between data parallelism and model parallelism
+
+Data parallelism with all-reduce
+
+Know dropout - how does it work in train and in test - read something on slide
+	Do not use dropout during test
+	Network is being trained on % less activations - how to account when then testing and adjust activations
+
+Communication - efficient learning of of deep learning networks from decentralized data
+
